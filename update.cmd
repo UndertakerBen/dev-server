@@ -29,11 +29,6 @@ echo https://github.com/uup-dump/json-api/archive/master.zip>>"%scriptDir%\%tmpf
 echo   out=json-api-master.zip>>"%scriptDir%\%tmpfile%"
 echo.>>"%scriptDir%\%tmpfile%"
 
-rem autodl_files-master
-echo https://github.com/uup-dump/autodl_files/archive/master.zip>>"%scriptDir%\%tmpfile%"
-echo   out=autodl_files-master.zip>>"%scriptDir%\%tmpfile%"
-echo.>>"%scriptDir%\%tmpfile%"
-
 rem fileinfo-master
 echo https://github.com/uup-dump/fileinfo/archive/master.zip>>"%scriptDir%\%tmpfile%"
 echo   out=fileinfo-master.zip>>"%scriptDir%\%tmpfile%"
@@ -52,7 +47,6 @@ echo Extracting data...
 "%a7z%" x -o"%scriptDir%tmp\extracted" "%scriptDir%tmp\website-master.zip"
 "%a7z%" x -o"%scriptDir%tmp\extracted" "%scriptDir%tmp\api-master.zip"
 "%a7z%" x -o"%scriptDir%tmp\extracted" "%scriptDir%tmp\json-api-master.zip"
-"%a7z%" x -o"%scriptDir%tmp\extracted" "%scriptDir%tmp\autodl_files-master.zip"
 "%a7z%" x -o"%scriptDir%tmp\extracted" "%scriptDir%tmp\fileinfo-master.zip"
 "%a7z%" x -o"%scriptDir%tmp\extracted" "%scriptDir%tmp\packs-master.zip"
 
@@ -74,11 +68,6 @@ for /D %%i in ("%scriptDir%tmp\extracted\api-master*") do (
 	del /F /Q "%%i\readme.md"
 	xcopy /cherkyq "%%i\*" "%scriptDir%\src\api"
 	xcopy /cherkyq "%%i\*" "%scriptDir%\src-jsonapi\api"
-)
-
-for /D %%i in ("%scriptDir%tmp\extracted\autodl_files-master*") do (
-	del /F /Q "%%i\readme.md"
-	xcopy /cherkyq "%%i\*" "%scriptDir%\src\autodl_files"
 )
 
 mkdir "%scriptDir%\src\fileinfo"
